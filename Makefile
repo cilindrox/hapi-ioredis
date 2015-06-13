@@ -4,6 +4,8 @@ NODE_MODULES=node_modules/.bin
 STANDARD=$(NODE_MODULES)/standard
 
 ISTANBUL=$(NODE_MODULES)/istanbul
+
+COVERALLS=$(NODE_MODULES)/coveralls
 COVERAGE_REPORT=coverage/lcov.info
 COVERAGE_PCT=90
 
@@ -23,7 +25,7 @@ cover: clean-cov
 test-cov: clean-cov
 	@$(ISTANBUL) cover $(MOCHA) --report lcovonly -- \
 		--reporter dot $(TESTS) \
-		&& cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js \
+		&& cat ./coverage/lcov.info | $(COVERALLS) \
 		&& rm -rf ./coverage
 
 check-coverage:
