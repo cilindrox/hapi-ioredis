@@ -22,7 +22,9 @@ cover: clean-cov
 
 test-cov: clean-cov
 	@$(ISTANBUL) cover $(MOCHA) --report lcovonly -- \
-		--reporter dot $(TESTS)
+		--reporter dot $(TESTS) \
+		&& cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js \
+		&& rm -rf ./coverage
 
 check-coverage:
 	@$(ISTANBUL) check-coverage \
