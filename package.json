@@ -1,0 +1,27 @@
+{
+  "name": "hapi-ioredis",
+  "version": "0.0.0",
+  "description": "An ioredis hapi plugin",
+  "keywords": [],
+  "author": "Gaston Festari <cilindrox@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/cilindrox/hapi-ioredis.git"
+  },
+  "scripts": {
+    "test": "make test-cov"
+  },
+  "dependencies": {
+    "ioredis": "^1.4.0"
+  },
+  "devDependencies": {
+    "chai": "^3.0.0",
+    "coveralls": "^2.11.2",
+    "hapi": "^8.6.1",
+    "istanbul": "^0.3.15",
+    "mocha": "^2.2.5",
+    "standard": "^4.2.1"
+  },
+  "main": "index",
+  "license": "MIT"
+}
