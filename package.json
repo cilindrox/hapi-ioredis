@@ -2,7 +2,11 @@
   "name": "hapi-ioredis",
   "version": "0.0.0",
   "description": "An ioredis hapi plugin",
-  "keywords": [],
+  "keywords": [
+    "hapi",
+    "redis",
+    "ioredis"
+  ],
   "author": "Gaston Festari <cilindrox@gmail.com>",
   "repository": {
     "type": "git",
