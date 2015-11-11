@@ -2,7 +2,7 @@
 
   An [ioredis] hapi plugin
 
-[![Build Status](https://travis-ci.org/cilindrox/hapi-ioredis.svg)](https://travis-ci.org/cilindrox/hapi-ioredis) [![Code Climate](https://codeclimate.com/github/cilindrox/hapi-ioredis/badges/gpa.svg)](https://codeclimate.com/github/cilindrox/hapi-ioredis) [![Coverage Status](https://coveralls.io/repos/cilindrox/hapi-ioredis/badge.svg)](https://coveralls.io/r/cilindrox/hapi-ioredis) [![Dependency Status](https://david-dm.org/cilindrox/hapi-ioredis.svg)](https://david-dm.org/cilindrox/hapi-ioredis)
+[![Build Status](https://travis-ci.org/cilindrox/hapi-ioredis.svg)](https://travis-ci.org/cilindrox/hapi-ioredis)
 
 ## Installation
 
