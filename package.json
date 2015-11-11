@@ -12,20 +12,21 @@
     "type": "git",
     "url": "git://github.com/cilindrox/hapi-ioredis.git"
   },
+  "engines": {
+    "node": ">=4.0.0"
+  },
   "scripts": {
-    "test": "make test-cov"
+    "test": "lab -t 100 -a code -L",
+    "test-cov-html": "lab -r html -o coverage.html -a code"
   },
   "dependencies": {
-    "ioredis": "^1.4.0"
+    "ioredis": "^1.10.0"
   },
   "devDependencies": {
-    "chai": "^3.0.0",
-    "coveralls": "^2.11.2",
-    "hapi": "^8.6.1",
-    "istanbul": "^0.3.15",
-    "mocha": "^2.2.5",
-    "standard": "^4.2.1"
+    "code": "2.x.x",
+    "hapi": "11.x.x",
+    "lab": "7.x.x"
   },
-  "main": "index",
+  "main": "./lib/index.js",
   "license": "MIT"
 }

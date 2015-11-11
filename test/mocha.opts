@@ -1,6 +1,0 @@
---reporter spec
---check-leaks
---ui bdd
---recursive
---bail
---require test/env
