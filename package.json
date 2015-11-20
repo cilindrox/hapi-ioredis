@@ -20,7 +20,8 @@
     "test-cov-html": "lab -r html -o coverage.html -a code"
   },
   "dependencies": {
-    "ioredis": "^1.10.0"
+    "ioredis": "^1.10.0",
+    "redis-url-parser": "0.0.2"
   },
   "devDependencies": {
     "code": "2.x.x",
