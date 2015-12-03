@@ -20,6 +20,7 @@
     "test-cov-html": "lab -r html -o coverage.html -a code"
   },
   "dependencies": {
+    "hoek": "^3.0.4",
     "ioredis": "^1.10.0",
     "redis-url-parser": "0.0.2"
   },

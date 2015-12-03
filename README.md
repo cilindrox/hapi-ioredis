@@ -12,7 +12,7 @@ npm install --save hapi-ioredis
 
 ## Quick start
 
-This pretty much works as a regular node-redis/ioredis client, with the addition of providing an easily accessible instance via the [`server.plugins`](http://hapijs.com/api#serverplugins) object.
+This pretty much works as a regular node-redis/ioredis client, with the addition of providing an easily accessible instance via the [`server.app`](http://hapijs.com/api#serverapp) common namespace.
 
 ## Examples
 
@@ -53,7 +53,7 @@ server.route( {
 // Access the ioRedis instance
 function usersHandler (request, reply) {
   
-  var client = request.server.plugins['hapi-ioredis'].client;
+  var client = request.server.app.redis;
 
   // Do something with it
   client.hgetall('users', function (err, obj) {

@@ -22,30 +22,36 @@ const expect = Code.expect;
 it('can be added as a plugin to Hapi', (done) => {
 
     const server = new Hapi.Server();
+    const plugin = {
+        register: ioRedis,
+        options: { url: 'redis://:@127.0.0.1:6379/' }
+    };
 
-    server.register(ioRedis, (err) => {
+    server.register(plugin, (err) => {
 
         expect(err).to.not.exist();
-        expect(server.plugins['hapi-ioredis']).to.exist();
-        expect(server.plugins['hapi-ioredis'].client).to.be.an.object();
+        expect(server.app.redis).to.exist();
+        expect(server.app.redis.disconnect).to.be.a.function();
         done();
     });
 });
 
 
-it('parses a given redis URL', (done) => {
+it('can be registered with a redis options config object', (done) => {
 
     const server = new Hapi.Server();
-    const register = {
+    const plugin = {
         register: ioRedis,
-        options: { url: 'redis://:@127.0.0.1:6379/' }
+        options: {
+            redis: { host: '127.0.0.1', port: '6379' }
+        }
     };
 
-    server.register(register, (err) => {
+    server.register(plugin, (err) => {
 
         expect(err).to.not.exist();
-        expect(server.plugins['hapi-ioredis']).to.exist();
-        expect(server.plugins['hapi-ioredis'].client).to.be.an.object();
+        expect(server.app.redis).to.exist();
+        expect(server.app.redis.disconnect).to.be.a.function();
         done();
     });
 });
