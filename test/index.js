@@ -5,7 +5,7 @@
 const Code = require('code');
 const Hapi = require('hapi');
 const Lab = require('lab');
-const ioRedis = require('../');
+const IoRedis = require('../');
 
 // Declare internals
 
@@ -23,7 +23,7 @@ it('can be added as a plugin to Hapi', (done) => {
 
     const server = new Hapi.Server();
     const plugin = {
-        register: ioRedis,
+        register: IoRedis,
         options: { url: 'redis://:@127.0.0.1:6379/' }
     };
 
@@ -41,7 +41,7 @@ it('can be registered with a redis options config object', (done) => {
 
     const server = new Hapi.Server();
     const plugin = {
-        register: ioRedis,
+        register: IoRedis,
         options: {
             redis: { host: '127.0.0.1', port: '6379' }
         }
