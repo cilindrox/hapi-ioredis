@@ -8,6 +8,9 @@
     "ioredis"
   ],
   "author": "Gaston Festari <cilindrox@gmail.com>",
+  "contributors": [
+    {"name": "James Dixon", "email": "jim.w.dixon@gmail.com"}
+  ],
   "repository": {
     "type": "git",
     "url": "git://github.com/cilindrox/hapi-ioredis.git"
