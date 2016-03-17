@@ -22,52 +22,53 @@ var server = new Hapi.Server();
 server.connection({ host: 'localhost' });
 
 var options = {
-  // ioRedis config options 
-  // See: https://github.com/luin/ioredis/blob/master/API.md#new_Redis_new
+    // ioRedis config options 
+    // See: https://github.com/luin/ioredis/blob/master/API.md#new_Redis_new
 };
 
 // Register the plugin
 server.register({
-  register: require('hapi-ioredis'),
-  options: options
+    register: require('hapi-ioredis'),
+    options: options
 }, function (err) {
 
-  if (err) {
-    console.error(err);
-  } 
-  else {
-    server.start(function () {
+    if (err) {
+        console.error(err);
+    } 
+    else {
+        server.start(function () {
 
-      console.info('Server started at ' + server.info.uri);
-    });
-  }
+            console.info('Server started at ' + server.info.uri);
+        });
+    }
 });
 
 // Declare a route that uses it
 server.route( {
-  'method'  : 'GET',
-  'path'    : '/stats',
-  'handler' : usersHandler
+    'method': 'GET',
+    'path': '/stats',
+    'handler': usersHandler
 });
 
 // Access the ioRedis instance
 function usersHandler (request, reply) {
   
-  var client = request.server.app.redis;
+    var client = request.redis;     // also available via request.server.app.redis
 
-  // Do something with it
-  client.hgetall('users', function (err, obj) {
+    // Do something with it
+    client.hgetall('users', function (err, obj) {
     
-    if (err) {
-      // handle error (https://github.com/luin/ioredis#error-handling)
-    }
+        if (err) {
+            // handle error (https://github.com/luin/ioredis#error-handling)
+        }
 
-    return reply({ result: obj });
-  });
+        return reply({ result: obj });
+    });
 };
 
 server.start(function() {
-  console.log("Server started at " + server.info.uri);
+    
+    console.log("Server started at " + server.info.uri);
 });
 
 ```

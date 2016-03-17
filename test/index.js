@@ -55,3 +55,44 @@ it('can be registered with a redis options config object', (done) => {
         done();
     });
 });
+
+
+it('decorates the request object with a redis prop', (done) => {
+
+    const server = new Hapi.Server();
+    const plugin = {
+        register: IoRedis,
+        options: { url: 'redis://:@127.0.0.1:6379/' }
+    };
+
+    server.register(plugin, (err) => {
+
+        expect(err).to.not.exist();
+
+        server.connection();
+        server.route({
+            method: 'GET',
+            path: '/',
+            config: {
+                handler: (request, reply) => {
+
+                    expect(request.redis).to.exist();
+                    expect(request.redis.disconnect).to.be.a.function();
+                    return reply('GREAT SUCCESS!');
+                }
+            }
+        });
+
+        const payload = {
+            method: 'GET',
+            url: '/'
+        };
+
+        server.inject(payload, (response) => {
+
+            expect(response.statusCode).to.equal(200);
+            expect(response.result).to.equal('GREAT SUCCESS!');
+            done();
+        });
+    });
+});
