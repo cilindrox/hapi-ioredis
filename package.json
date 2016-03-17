@@ -1,6 +1,6 @@
 {
   "name": "hapi-ioredis",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "An ioredis hapi plugin",
   "keywords": [
     "hapi",
@@ -9,7 +9,10 @@
   ],
   "author": "Gaston Festari <cilindrox@gmail.com>",
   "contributors": [
-    {"name": "James Dixon", "email": "jim.w.dixon@gmail.com"}
+    {
+      "name": "James Dixon",
+      "email": "jim.w.dixon@gmail.com"
+    }
   ],
   "repository": {
     "type": "git",
