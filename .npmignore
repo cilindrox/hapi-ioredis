@@ -1,5 +1,2 @@
-support
-test
-examples
-*.sock
-coverage
+*
+!lib/**
