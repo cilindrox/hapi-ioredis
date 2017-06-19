@@ -96,3 +96,23 @@ it('decorates the request object with a redis prop', (done) => {
         });
     });
 });
+
+it('can override the name of the redis instance on server.app', (done) => {
+
+    const server = new Hapi.Server();
+    const plugin = {
+        register: IoRedis,
+        options: {
+            redis: { host: '127.0.0.1', port: '6379' },
+            name: 'myRedisInstance'
+        }
+    };
+
+    server.register(plugin, (err) => {
+
+        expect(err).to.not.exist();
+        expect(server.app.myRedisInstance).to.exist();
+        expect(server.app.myRedisInstance.disconnect).to.be.a.function();
+        done();
+    });
+});
