@@ -22,7 +22,10 @@ var server = new Hapi.Server();
 server.connection({ host: 'localhost' });
 
 var options = {
-    // ioRedis config options 
+    // you can override the name of the instance (defaults to 'redis') available on server.app
+    // name: 'myRedisInstance'
+
+    // ioRedis config options
     // See: https://github.com/luin/ioredis/blob/master/API.md#new_Redis_new
 };
 
@@ -34,7 +37,7 @@ server.register({
 
     if (err) {
         console.error(err);
-    } 
+    }
     else {
         server.start(function () {
 
@@ -52,12 +55,12 @@ server.route( {
 
 // Access the ioRedis instance
 function usersHandler (request, reply) {
-  
+
     var client = request.redis;     // also available via request.server.app.redis
 
     // Do something with it
     client.hgetall('users', function (err, obj) {
-    
+
         if (err) {
             // handle error (https://github.com/luin/ioredis#error-handling)
         }
@@ -67,7 +70,7 @@ function usersHandler (request, reply) {
 };
 
 server.start(function() {
-    
+
     console.log("Server started at " + server.info.uri);
 });
 
@@ -89,7 +92,7 @@ This module borrows heavily from [hapi-redis], so kudos to @sandfox.
 [ioredis]: https://github.com/luin/ioredis
 [hapi-redis]: https://github.com/sandfox/node-hapi-redis
 
-## License 
+## License
 
 (The MIT License)
 
