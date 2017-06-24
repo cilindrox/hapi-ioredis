@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "hoek": "4.x.x",
-    "ioredis": "2.x.x"
+    "ioredis": "3.x.x"
   },
   "devDependencies": {
     "code": "4.x.x",
