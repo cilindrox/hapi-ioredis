@@ -85,7 +85,7 @@ $ npm install
 $ npm test
 ```
 
-## Acknoledgements
+## Acknowledgements
 
 This module borrows heavily from [hapi-redis], so kudos to @sandfox.
 
