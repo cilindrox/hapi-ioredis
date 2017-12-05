@@ -10,6 +10,11 @@
 npm install --save hapi-ioredis
 ```
 
+## Compatability
+This plugin is compatible with Hapy v17+.
+
+For usage with older versions of Hapi, please use version 3.x.
+
 ## Quick start
 
 This pretty much works as a regular node-redis/ioredis client, with the addition of providing an easily accessible instance via the [`server.app`](http://hapijs.com/api#serverapp) common namespace.
@@ -17,11 +22,10 @@ This pretty much works as a regular node-redis/ioredis client, with the addition
 ## Examples
 
 ```js
-var Hapi = require('hapi');
-var server = new Hapi.Server();
-server.connection({ host: 'localhost' });
+const Hapi = require('hapi');
+const server = new Hapi.Server();
 
-var options = {
+const options = {
     // you can override the name of the instance (defaults to 'redis') available on server.app
     // name: 'myRedisInstance'
 
@@ -30,20 +34,9 @@ var options = {
 };
 
 // Register the plugin
-server.register({
-    register: require('hapi-ioredis'),
+await server.register({
+    plugin: require('hapi-ioredis'),
     options: options
-}, function (err) {
-
-    if (err) {
-        console.error(err);
-    }
-    else {
-        server.start(function () {
-
-            console.info('Server started at ' + server.info.uri);
-        });
-    }
 });
 
 // Declare a route that uses it
@@ -54,7 +47,7 @@ server.route( {
 });
 
 // Access the ioRedis instance
-function usersHandler (request, reply) {
+function usersHandler (request, h) {
 
     var client = request.redis;     // also available via request.server.app.redis
 
@@ -65,15 +58,11 @@ function usersHandler (request, reply) {
             // handle error (https://github.com/luin/ioredis#error-handling)
         }
 
-        return reply({ result: obj });
+        return { result: obj };
     });
 };
 
-server.start(function() {
-
-    console.log("Server started at " + server.info.uri);
-});
-
+await server.start();
 ```
 
 ## Tests
