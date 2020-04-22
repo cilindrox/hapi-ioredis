@@ -1,5 +1,7 @@
 # hapi-ioredis
 
+** DEPRECATED ** - Please use [`server.bind` instead][0].
+
   An [ioredis] hapi plugin
 
 [![Build Status](https://travis-ci.org/cilindrox/hapi-ioredis.svg)](https://travis-ci.org/cilindrox/hapi-ioredis)
@@ -105,3 +107,5 @@ IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
 CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
 TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+[0]: https://github.com/outmoded/discuss/issues/182#issuecomment-150984055
